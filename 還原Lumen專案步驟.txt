@@ -1,0 +1,21 @@
+Windows 測試環境 還原 Lumen 專案步驟
+    A. 必須安裝下列軟體
+        1. XAMPP
+        2. Composer
+
+    B. 還原步驟
+        1. 還原 vendor 核心目錄
+            composer install
+
+    C. 設定 (切換到專案根目錄)
+        1. 複製 .env.example 到 .env 檔案
+        4. 產生 APP_KEY
+            php artisan key:generate
+        5. 產生 JWT Secret Key (執行過程中會詢問覆蓋,選擇yes覆蓋)
+            php artisan jwt:secret
+        6. 設定 .env
+            i. 設定資料庫名稱及帳號密碼
+        7. 還原資料庫
+            php artisan migrate
+        8. 產生假資料
+            php artisan db:seed
