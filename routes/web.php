@@ -26,3 +26,13 @@ $router->group([
     $router->get('me', 'UserLoginController@me');
     $router->get('logout', 'UserLoginController@logout');
 });
+
+// 後台管理者登入登出及查詢自己
+$router->group([
+    'prefix' => '/admin',
+    'namespace' => 'Api',
+], function () use ($router) {
+    $router->post('login', 'AdminLoginController@login');
+    $router->get('me', 'AdminLoginController@me');
+    $router->get('logout', 'AdminLoginController@logout');
+});
