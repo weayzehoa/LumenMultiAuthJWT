@@ -16,6 +16,7 @@ class UserLoginController extends Controller
     {
         //除了 login 其餘 function 都要經過 api 的 middleware 檢查
         $this->middleware('auth:api', ['except' => ['login']]);
+        $this->middleware('jwtRefresh', ['except' => ['login']]);
     }
 
     /**

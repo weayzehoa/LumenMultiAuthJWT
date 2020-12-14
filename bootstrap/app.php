@@ -79,6 +79,8 @@ $app->configure('app');
 
 $app->routeMiddleware([
     'auth' => App\Http\Middleware\Authenticate::class,
+    //Jwt Token Auto Refresh Middleware
+    'jwtRefresh' => App\Http\Middleware\JwtRefreshToken::class,
 ]);
 
 /*
