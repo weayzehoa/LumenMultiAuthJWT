@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Models\User as UserEloquent;
+use App\Models\Admin as AdminEloquent;
 
 class DatabaseSeeder extends Seeder
 {
@@ -15,6 +16,16 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // $this->call('UsersTableSeeder');
+        //建立一筆後台管理者
+        AdminEloquent::create([
+            'name' => '後台管理者',
+            'gender' => 1,
+            'email' => 'admin@mail.com',
+            'email_verified_at' => date('Y-m-d H:i:s'),
+            'password' => app('hash')->make('admin'),
+            'address' => '地球',
+            'tel' => '0123456789',
+        ]);
         //建立一筆使用者
         UserEloquent::create([
             'name' => '使用者',
@@ -36,5 +47,7 @@ class DatabaseSeeder extends Seeder
         ]);
         //在users資料表建立18筆
         UserEloquent::factory()->count(18)->create();
+        //在users資料表建立9筆
+        AdminEloquent::factory()->count(9)->create();
     }
 }
